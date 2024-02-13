@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true">
+  <div class="content-wrapper">
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ "BEERCATALOGTITLE" | translate }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <!-- Selector de idioma -->
+    <ion-item>
+      <ion-select
+        label="Idioma"
+        placeholder="Idioma"
+        (ionChange)="changeLanguage($event)"
+        [value]="currentLang"
+      >
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="ca">Català</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <br />
+
+    <!-- Por ahora lo pongo con una imagen cambiarlo por una tabla-->
+    <!-- <div class="centrado">
+      <img class="image" src="assets/img/cervezas.png" alt="cervezas" />
+    </div> -->
+    <!-- <div>
+      <ul>
+        <li *ngFor="let cerveza of cerveza" (click)="logCerveza(cerveza)">
+          {{cerveza.beerName}}
+          <ion-icon
+            (click)="updateCerveza(cerveza)"
+            name="create-outline"
+          ></ion-icon>
+        </li>
+      </ul>
+    </div> -->
+    <br />
+    <!-- Tarjetas de cerveza -->
+    <div *ngFor="let cerveza of cerveza">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title
+            >{{cerveza.beerName}} <ion-icon name="beer-outline"></ion-icon
+          ></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>
+            {{ "VOLUME" | translate }}: {{cerveza.beerVolume}}
+            {{cerveza.beerVolumeUnit}}
+          </p>
+          <p>{{ "VALUEENERGY" | translate }}: {{cerveza.beerEnergyValue}}</p>
+          <p *ngIf="cerveza.image">
+            {{ "IMAGE" | translate }}:<br />
+            <img [src]="cerveza.image" class="custom-image" />
+          </p>
+
+          <ion-button (click)="eliminarCerveza(cerveza)" shape="round">
+            {{ "DELETE" | translate }} &#8680; <ion-icon name="beer-outline"></ion-icon>
+          </ion-button>
+          <ion-button (click)="updateCerveza(cerveza)" shape="round"
+            >{{ "EDIT" | translate }} &#8680; <ion-icon name="beer-outline"></ion-icon
+          ></ion-button>
+          <ion-button (click)="setResumen(cerveza)">+</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <br />
+
+    <div class="centrado">
+      <ion-button (click)="navegarAPagina()" shape="round"
+        >{{ "ADDBEERBUTTON" | translate }}</ion-button
+      >
+    </div>
+  </div>
+
+  <footer>
+    <h1>545/2100 kcal</h1>
+    <p>{{ "FOOTER" | translate }}</p>
+  </footer>
+</ion-content>

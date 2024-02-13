@@ -1,0 +1,35 @@
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+ion-button {
+    --background: #E1523D;
+    margin: 20px;
+    text-transform: none;
+}
+
+.image {
+    width: 300px;
+}
+
+footer {
+    background-color: #003547;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+
+
+/* Limitar el tamaño máximo de la imagen a 200px */
+.custom-image {
+    max-width: 200px;
+  }
+  
